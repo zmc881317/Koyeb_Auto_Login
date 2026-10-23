@@ -11,6 +11,9 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 def validate_env_variables():
     """验证环境变量"""
     koyeb_accounts_env = os.getenv("KOYEB_ACCOUNTS")
+    single_token = (os.getenv("KOYEB_TOKEN") or "").strip()
+    if not koyeb_accounts_env and single_token:
+        return [{"email": os.getenv("KOYEB_EMAIL") or "koyeb", "token": single_token}]
     if not koyeb_accounts_env:
         raise ValueError("❌ KOYEB_ACCOUNTS 环境变量未设置或格式错误")
     try:
