@@ -25,6 +25,7 @@ jobs:
     - name: 🚀 Run Koyeb login script
       env:
         KOYEB_ACCOUNTS: ${{ secrets.KOYEB_ACCOUNTS }}
+        KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
         TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
       run: python koyeb.py
